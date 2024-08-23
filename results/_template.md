@@ -12,7 +12,7 @@ The goal of the prototyping phase is not to completely implement the SWT layer w
 
 ### Reasons
 
-<!-- What were the reasons for considering this technology/technologies? That may not only include the overall technology like Gtk but also reasons for choosing a specific port for another OS or the like. And that may go beyond why we initially chose to develop a prototype based on the technology: did you find further benefits during the prototyping work that serve as reasons for choosing the technology? -->
+<!-- What were the reasons for considering this technology/technologies? That may not only include the overall technology, like Gtk, but also reasons for choosing a specific port for another OS or the like. The reasons may go beyond why we initially chose to develop a prototype based on the technology: did you find further benefits during the prototyping work that serve as reasons for choosing the technology? -->
 
 ### Details
 
@@ -20,7 +20,7 @@ The goal of the prototyping phase is not to completely implement the SWT layer w
 
 ### Required Skills
 
-<!-- What specific skills are required for adopting the technology, e.g., do you require specific programming (language) skills like C/C++? When are they required, e.g., only for setting something up one, or frequently for fixing bugs, debugging etc.? -->
+<!-- What specific skills are required for adopting the technology, e.g., do you require specific programming (language) skills like C/C++? When are they required, e.g., only for setting something up once, or frequently for fixing bugs, debugging etc.? -->
 
 
 ## Contributors
@@ -35,27 +35,26 @@ Total time invest was about ...
 
 ## Results
 
-<!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produces, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
+<!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produced, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
 
 ### Achievements
 
-<!-- What did you achieve in terms of concrete prototyping work? That may include code, documentation and other artifacts. What features/functionality can you show with these artifacts? Which milestones did not reach and what functionality artifacts and document did you gain when developing the prototype? -->
-
+<!-- What did you achieve in terms of concrete prototyping work? That may include code, documentation and other artifacts. What features/functionality can you show with these artifacts? Which milestones did you reach and what functionality do they cover and demonstrate? It would also be great to see some screenshot in specifically this section (which may be outsourced to the Appendix to ease readability of this section). -->
 
 ### Insights
 
-<!-- What insights did you gain when developing the prototype? What were the central obstacles that might also influence a complete SWT implementation based on that technology? What was complicated to achieve? What did take long? -->
+<!-- What insights did you gain when developing the prototype? What were the central obstacles that might also influence a full SWT implementation based on that technology? What was complicated to achieve? What did take long? -->
 
 ### Risks
 
-<!-- What are risks / unknown points when trying to develop an actual SWT implementation based on this technology? -->
+<!-- Which risks do you see for developing an actual SWT implementation based on this technology? Are there still unknown points for which feasibility or complexity cannot be estimated yet? Do you see blockers? -->
 
 
 ## Conclusion
 
 <!-- A summarizing statement, based on the previous insights, assessing whether or how far the technology is a suitable candidate for a new Eclipse SWT implementation -->
 
-**Final Assessment:** <!-- Closing assessment statement in one or two sentences-->
+**Final Assessment:** <!-- Closing assessment statement in one or two sentences; should be sufficient to understand the overall assessment in one minute -->
 
 
 ## Appendix
