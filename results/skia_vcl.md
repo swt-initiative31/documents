@@ -254,7 +254,7 @@ Screenshots for several snippets have been taken once based on the SWT version r
 
 #### Snippet 1 (Window)
 Existing Win32 implementation:\
-![Snippet1 Windows](images_skia_vcl_vcl/snippet1_windows.png)
+![Snippet1 Windows](images_skia_vcl/snippet1_windows.png)
 
 VCL/Uno-based implementation:\
 ![Snippet1 Uno](images_skia_vcl/snippet1_uno.png)
