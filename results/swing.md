@@ -19,9 +19,20 @@ Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java))
 - Standard in Java: 
     - Well maintained
     - Well documented
-    - Extensive community (expertise)
-    - Long life expectancy
+    - Extensive community (expertise):
+        - **81.000+** questions in _StackOverflow_ tagged with: [swing](https://stackoverflow.com/questions/tagged/swing) (vs. **6.000+** tagged with [swt](https://stackoverflow.com/questions/tagged/swt) for comparison)
+        - Relevant almost all over the world according to [Google Trends
+        ](https://trends.google.com/trends/explore?cat=5&q=Swing%20Java&hl=es-419)
+        
+        ![alt text](image.png)
+    - Long life expectancy: (quote from the [Java SE Spring 2024 Roadmap Update](https://blogs.oracle.com/support/post/java-se-spring-2024-roadmap-update)) 
+        > As announced in the [Java client roadmap update in 2020](http://blogs.oracle.com/java/post/java-client-roadmap-updates), Swing and AWT remain core Java SE technologies. They continue to receive bug fixes and updates on all LTS supported releases and mainline, as warranted by the evolution of the operating systems supported by Oracle Java. 
 - Customizable: supports themeing and can be made to look modern
+- Supports HiDPI
+- Supports vectorized icons
+- Initial (unfinished) implementation available
+    - ([SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing), based on [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html))
+
 
 
 ### Details
@@ -58,8 +69,6 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 ## Results
 
 - Swing port (branch): [SWTSwing](https://github.com/swt-initiative31/prototype-swing/tree/SWTSwing)
-    - Based on [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing) which is based on [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html)
-
 
 
 <!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produced, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
@@ -106,4 +115,6 @@ TO-DO: insert screenshots of snippets
 ### Interesting links
 - [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT)
     - [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15)
+- [Add Swing as a supported platform for SWT (Eclipse Issue Tracker)](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930)
+- [Swing port is coming - Lotus assists IBM! (Eclipse Forum)](https://www.eclipse.org/forums/index.php/t/145268/)
 <!-- (Optional) Additional material, like screenshots of the prototype or the like -->
