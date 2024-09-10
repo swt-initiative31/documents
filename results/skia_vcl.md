@@ -14,7 +14,7 @@ _Note:_ There is also the [`Visual Component Library (VCL)`](https://en.wikipedi
 
 ### Reasons
 
-The overall reasons for considering the combination of Skia and VCL for implementing SWT are the maturity and wide adoption of Skia as a rendering engine and VCL as a widget framework used by a long standing open-source product such as LibreOffice, which might also be an enabled for a UI-level integration of LibreOffice applications with Eclipse SWT-based applications.
+The overall reasons for considering the combination of Skia and VCL for implementing SWT are the maturity and wide adoption of Skia as a rendering engine and VCL as a widget framework used by a long standing open-source product such as LibreOffice, which might also be an enabler for a UI-level integration of LibreOffice applications with Eclipse SWT-based applications.
 
 Skia is a mature 2D graphics library used as the graphics / rendering engine for several modern desktop applications, such as Chrome, Firefox, Thunderbird, Android, LibreOffice, and others. Still, Skia is only a graphics engine providing drawing capabilities. It does, in particular, not provide widgets.
 There are several reasons for using Skia:
