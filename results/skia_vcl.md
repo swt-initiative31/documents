@@ -37,7 +37,7 @@ Reasons for using VCL from LibreOffice are:
 - It provides hardware-accelerated rendering capabilities based on Vulkan/OpenGL
 - It only allows to draw primitives, such as a lines or rectangles, and render fonts, but does not provide a widget toolkit
 - It is one of the backends of LibreOffice and its widget toolkit VCL, next to others like Qt or OS-native implementation based on GTK or Win32
-- VCL puts an abstraction layer on top of Skia (via widgets), which is why clients (such as SWT would be) don't need to interact with Skia directly by can do that via this abstraction layer
+- VCL puts an abstraction layer on top of Skia (via widgets), which is why clients (such as SWT would be) don't need to interact with Skia directly but can do that via this abstraction layer
 - Still directly accessing some Skia graphics canvas might be useful for performant rendering of completely custom-drawn parts
 
 #### Visual Class Library (VCL)
