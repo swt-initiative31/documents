@@ -98,7 +98,7 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 
 <!-- Which risks do you see for developing an actual SWT implementation based on this technology? Are there still unknown points for which feasibility or complexity cannot be estimated yet? Do you see blockers? -->
  - ??? (TO-DO)
-
+ 
 ## Conclusion
 
 <!-- A summarizing statement, based on the previous insights, assessing whether or how far the technology is a suitable candidate for a new Eclipse SWT implementation -->
@@ -110,7 +110,25 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 ### Screenshots
 
-TO-DO: insert screenshots of snippets
+`Snippet163`: `StyledText`
+
+![alt text](image-4.png)
+
+`Snippet113`: layout is wrong
+
+![alt text](image-2.png)
+
+`ControlExample`
+
+![alt text](image-3.png)
+
+`SnippetExplorer` with themeing (**FlatLaf Darcula**)
+
+![alt text](image-1.png)
+
+`Snippet128`: Browser
+
+![alt text](image-5.png)
 
 ### Interesting links
 - [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT)
