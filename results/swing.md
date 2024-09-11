@@ -90,14 +90,18 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 
 <!-- What insights did you gain when developing the prototype? What were the central obstacles that might also influence a full SWT implementation based on that technology? What was complicated to achieve? What did take long? -->
 
-- Current implementation of the `GC` class can't be used as-is: it introduces **breaking API changes**
+- Current implementation of the `Drawable` class can't be used as-is: it introduces **breaking API changes**
 - Decent preformance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15))
 - Instantiating a second `Display` is not a problem
 
 ### Risks
 
 <!-- Which risks do you see for developing an actual SWT implementation based on this technology? Are there still unknown points for which feasibility or complexity cannot be estimated yet? Do you see blockers? -->
- - ??? (TO-DO)
+ - Breaking API change in [`Drawable`](https://github.com/swt-initiative31/prototype-swing/blob/SWTSwing/bundles/org.eclipse.swt/Eclipse%20SWT/common/org/eclipse/swt/graphics/Drawable.java): since Swing does not work with `long` handles like Windows/Linux/Mac do, the `Drawable` interface of the Swing port works with a new type called [`CGC`](https://github.com/swt-initiative31/prototype-swing/blob/SWTSwing/bundles/org.eclipse.swt/Eclipse%20SWT%20PI/swing/org/eclipse/swt/internal/swing/CGC.java). In order to make the API compatible again and develop the Swing port side by side with the other ports one would have to introduce a mapping from/to `long` and `CGC` internally, which might affect performance
+
+ - There are no automated performance tests or any kind of benchmarking so the _good_ performance of the Swing port is really only subjective. Moving forward, a clear definition of what "_performance_" means might be needed.
+
+ - The Browser seems to work fine but it's necessary to test it more in detail _e.g._ by opening JavaDocs. For that, a complete RCP application with JDT must run.
  
 ## Conclusion
 
