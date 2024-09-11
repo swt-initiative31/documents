@@ -116,23 +116,27 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 `Snippet163`: `StyledText`
 
-![alt text](image-4.png)
+![Snippet163](image-4.png)
 
 `Snippet113`: layout is wrong
 
-![alt text](image-2.png)
+![Snippet113](image-2.png)
 
 `ControlExample`
 
-![alt text](image-3.png)
+![ControlExample](image-3.png)
 
 `SnippetExplorer` with themeing (**FlatLaf Darcula**)
 
-![alt text](image-1.png)
+![SnippetExplorer](image-1.png)
 
 `Snippet128`: Browser
 
-![alt text](image-5.png)
+![Browser](image-5.png)
+
+Bare RCP application (**not** the _sdk.product_)
+
+![Bare RCP application](image-6.png)
 
 ### Interesting links
 - [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT)
