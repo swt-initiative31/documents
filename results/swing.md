@@ -31,7 +31,7 @@ Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java))
 - Supports HiDPI
 - Supports vectorized icons
 - Initial (unfinished) implementation available
-    - ([SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing), based on [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html))
+    - [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing) (based on [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html))
 
 
 
@@ -77,38 +77,73 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 
 <!-- What did you achieve in terms of concrete prototyping work? That may include code, documentation and other artifacts. What features/functionality can you show with these artifacts? Which milestones did you reach and what functionality do they cover and demonstrate? It would also be great to see some screenshot in specifically this section (which may be outsourced to the Appendix to ease readability of this section). -->
 
-- Basic functionality working
-    - Buttons
-    - Labels
-    - Trees
-    - etc
-- Several Snippets run
-- `SnippetExplorer` runs
-- Non-standard themeing works: [FlatLaf](https://www.formdev.com/flatlaf/) was used
+#### Working
+- Buttons: Push, Check, Radio
+- StyledText:
+	- Setting the font style, foreground and background colors of StyledText (`Snippet163`)
+- StyleRange (`Snippet211`)
+- only show Window (`Snippet1`)
+- Textbox + Button (`Snippet116`)
+- Demonstrator with multiple SWT Display instances (`SnippetDoubleDisplay`)
+- `SnippetExplorer`
+- `CustomControlExample`
+-  Embedding of other window handles (Windows native / AWT)
+	- Embed Swing/AWT in SWT (`Snippet135`)
+	- Embed a `JTable` in SWT (no flicker) (`Snippet154`)
+- Themeing
+
+#### Working partially
+- Browser: no CSS
+- `ControlExample`: the application starts and looks good but some functionality is missing *e.g.* **Tooltips**
+- Eclipse SDK product: the application starts but it has some quirks *e.g.* 
+    - **Icons** (images) are not visible: it's not a problem with `ToolItem` because those already display images in a normal SWT application _e.g._ in a modified version of `Snippet47`.
+    - Views can not be properly minimized/maximized
+    - Layout looks odd
+    - Several errors about _resources not being properly disposed_ are thrown upon ending the application
+
+#### Not working (yet)
+- Layout
+- StyledText
+	- Drag text between two StyledText widgets (`Snippet210`)
+	- Draw a box around text (`Snippet244`)
+	- Use margins in StyledText (`Snippet316`)
+- Technology set up independently with some demo project
+- Sub-pixel rendering
+- Anti-aliasing
 
 ### Insights
 
 <!-- What insights did you gain when developing the prototype? What were the central obstacles that might also influence a full SWT implementation based on that technology? What was complicated to achieve? What did take long? -->
 
-- Current implementation of the `Drawable` class can't be used as-is: it introduces **breaking API changes**
-- Decent preformance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15))
+- Decent performance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15))
 - Instantiating a second `Display` is not a problem
+- Several basic stuff were already working (many widgets) but some were left unfinished, proper layouting being the most notorious.
+- The initial implementations (in SourceForge and in GitHub) weren't developed in years which means there was either little appeal to this approach or some impediment that we (yet) don't know about.
+- Years ago, the initial reaction to the approach was not that good. See [Add Swing as a supported platform for SWT](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930) and [Swing port is coming - Lotus assists IBM!](https://www.eclipse.org/forums/index.php/t/145268/).
 
 ### Risks
 
 <!-- Which risks do you see for developing an actual SWT implementation based on this technology? Are there still unknown points for which feasibility or complexity cannot be estimated yet? Do you see blockers? -->
- - Breaking API change in [`Drawable`](https://github.com/swt-initiative31/prototype-swing/blob/SWTSwing/bundles/org.eclipse.swt/Eclipse%20SWT/common/org/eclipse/swt/graphics/Drawable.java): since Swing does not work with `long` handles like Windows/Linux/Mac do, the `Drawable` interface of the Swing port works with a new type called [`CGC`](https://github.com/swt-initiative31/prototype-swing/blob/SWTSwing/bundles/org.eclipse.swt/Eclipse%20SWT%20PI/swing/org/eclipse/swt/internal/swing/CGC.java). In order to make the API compatible again and develop the Swing port side by side with the other ports one would have to introduce a mapping from/to `long` and `CGC` internally, which might affect performance
-
  - There are no automated performance tests or any kind of benchmarking so the _good_ performance of the Swing port is really only subjective. Moving forward, a clear definition of what "_performance_" means might be needed.
 
- - The Browser seems to work fine but it's necessary to test it more in detail _e.g._ by opening JavaDocs. For that, a complete RCP application with JDT must run.
+ - There is no Browser in the current Swing port so one has to be developed. The one currently being used is provided by the _common_ package (platform independent) but it doesn't support CSS.
+
+ - Limited support for embedding native components. It may require using a `JFXPanel` (JavaFX) or third-party libraries for browser embedding, but it doesn’t have native-level integration out of the box.
+
+ - Accessing platform-specific features (like tray icons, native dialogs, etc.) in Swing often requires workarounds or additional libraries like JNI.
+
+ - No native _look & feel_ (should that be a must)
+
+ - Swing’s `JTable`, `JTree`, and `JList` can handle large datasets, but managing large amounts of data efficiently can require more custom coding.
+
+ - It is unclear (at least to me) whether or not new features will be added to Swing in the future  or if it will only be maintained _i.e._ bugs will be fixed and security updates will be applied.
  
 ## Conclusion
 
 <!-- A summarizing statement, based on the previous insights, assessing whether or how far the technology is a suitable candidate for a new Eclipse SWT implementation -->
 
 **Final Assessment:** <!-- Closing assessment statement in one or two sentences; should be sufficient to understand the overall assessment in one minute -->
-Swing looks like a promising alternative to provide a single port of SWT because of its low risks, active development and ease of distribution. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market.
+Swing looks like a promising alternative to provide a single port of SWT because of its low risks, its ease of distribution and because they continue to receive bug fixes and updates. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market.
 
 ## Appendix
 
@@ -130,7 +165,7 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 ![SnippetExplorer](image-1.png)
 
-`Snippet128`: Browser
+`Snippet128`: Browser (no CSS)
 
 ![Browser](image-5.png)
 
@@ -138,7 +173,13 @@ Bare RCP application (**not** the _sdk.product_)
 
 ![Bare RCP application](image-6.png)
 
+Double display (`SnippetDoubleDisplay`)
+
+![Double display working](image-7.png)
+
 ### Interesting links
+- [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing), 
+- [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html)
 - [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT)
     - [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15)
 - [Add Swing as a supported platform for SWT (Eclipse Issue Tracker)](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930)
