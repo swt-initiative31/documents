@@ -87,14 +87,16 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 - Demonstrator with multiple SWT Display instances (`SnippetDoubleDisplay`)
 - `SnippetExplorer`
 - `CustomControlExample`
--  Embedding of other window handles (Windows native / AWT)
+-  Embedding of AWT components
 	- Embed Swing/AWT in SWT (`Snippet135`)
 	- Embed a `JTable` in SWT (no flicker) (`Snippet154`)
 - Themeing
 
 #### Working partially
 - Browser: no CSS
-- `ControlExample`: the application starts and looks good but some functionality is missing *e.g.* **Tooltips**
+- `ControlExample`: the application starts and looks good but some functionality is missing *e.g.* 
+    - The **Tooltips** tab does not display any tooltip even though tooltips do work (they appear when one hovers over buttons in other tabs).
+    - The **DateTime** widget is not implemented (yet) so its tab is not useful. 
 - Eclipse SDK product: the application starts but it has some quirks *e.g.* 
     - **Icons** (images) are not visible: it's not a problem with `ToolItem` because those already display images in a normal SWT application _e.g._ in a modified version of `Snippet47`.
     - Views can not be properly minimized/maximized
@@ -102,14 +104,14 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
     - Several errors about _resources not being properly disposed_ are thrown upon ending the application
 
 #### Not working (yet)
-- Layout
+The following topics are not working yet but there is no reason why it shouldn't work, it's just a matter of implementing the functionality.
+
 - StyledText
 	- Drag text between two StyledText widgets (`Snippet210`)
 	- Draw a box around text (`Snippet244`)
 	- Use margins in StyledText (`Snippet316`)
 - Technology set up independently with some demo project
-- Sub-pixel rendering
-- Anti-aliasing
+- The `DateTime` widget is not implemented (yet)
 
 ### Insights
 
@@ -117,8 +119,10 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 
 - Decent performance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15))
 - Instantiating a second `Display` is not a problem
-- Several basic stuff were already working (many widgets) but some were left unfinished, proper layouting being the most notorious.
+- Several basic stuff were already working (many widgets) but some were left unfinished, calculating the right size of some components like *CoolBars* and *ExpandBars* being the most notorious.
+- Activating the anti-aliasing for fonts and graphics is already possible and it can be seen in the `GraphicsExample` snippet (screenshots below).
 - The initial implementations (in SourceForge and in GitHub) weren't developed in years which means there was either little appeal to this approach or some impediment that we (yet) don't know about.
+- Sub-pixel rendering is not supported out of the box by Swing. The reason for this is that Swing is cross-platform and sub-pixel rendering is highly dependent on the hardware. While there are `RenderingHints` like `VALUE_TEXT_ANTIALIAS_LCD_HRGB` and `VALUE_TEXT_ANTIALIAS_LCD_HBGR` that can be provided to the `Graphics2D`, these do not assure true sub-pixel rendering because they depend on details like the LCD display having a specific pixel disposition (BGR / RGB).
 - Years ago, the initial reaction to the approach was not that good. See [Add Swing as a supported platform for SWT](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930) and [Swing port is coming - Lotus assists IBM!](https://www.eclipse.org/forums/index.php/t/145268/).
 
 ### Risks
@@ -126,13 +130,11 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 <!-- Which risks do you see for developing an actual SWT implementation based on this technology? Are there still unknown points for which feasibility or complexity cannot be estimated yet? Do you see blockers? -->
  - There are no automated performance tests or any kind of benchmarking so the _good_ performance of the Swing port is really only subjective. Moving forward, a clear definition of what "_performance_" means might be needed.
 
- - There is no Browser in the current Swing port so one has to be developed. The one currently being used is provided by the _common_ package (platform independent) but it doesn't support CSS.
+ - The current custom implementation of the Browser (`CBrowserImplementation`) lacks basic functionality like CSS support.
 
- - Limited support for embedding native components. It may require using a `JFXPanel` (JavaFX) or third-party libraries for browser embedding, but it doesn’t have native-level integration out of the box.
+ - Embedding native window handles is not easy out of the box and it requires further investigation.
 
  - Accessing platform-specific features (like tray icons, native dialogs, etc.) in Swing often requires workarounds or additional libraries like JNI.
-
- - No native _look & feel_ (should that be a must)
 
  - Swing’s `JTable`, `JTree`, and `JList` can handle large datasets, but managing large amounts of data efficiently can require more custom coding.
 
@@ -141,9 +143,11 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 ## Conclusion
 
 <!-- A summarizing statement, based on the previous insights, assessing whether or how far the technology is a suitable candidate for a new Eclipse SWT implementation -->
+Based on the amount of effort put into this PoC and the fact that most of it was achieved during a 1-day session in the SAP Hackathon in June, Swing has proven (as expected) to be a good candidate to offer a single multi-platform port for SWT. Lots of the main functionalities are working after the PoC, some are still not (the most important being the **Browser**), performance is acceptable (no flickering while working with the UI) and the fact that there is a foundation to start with makes it a low cost alternative. There are though some caveats that require a deeper analysis, like the quality of the fonts which is (currently) visibly inferior to the quality seen in the OS-dependent ports. One last point is the fact that even though Swing is and will remain part of the JDK for the foreseeable future that doesn't necessarily mean that new features will be added to it, so there's the risk of Swing being outdate in the coming years (this doesn't necessarily mean that it will _look_ outdated since Swing supports themeing). 
+
 
 **Final Assessment:** <!-- Closing assessment statement in one or two sentences; should be sufficient to understand the overall assessment in one minute -->
-Swing looks like a promising alternative to provide a single port of SWT because of its low risks, its ease of distribution and because they continue to receive bug fixes and updates. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market.
+Swing looks like a promising alternative to provide a single port of SWT because of its low risks, ease of distribution and because it continues to receive bug fixes and updates. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market. I suggest to keep looking into it and extend the PoC period in order to gain deeper insight regarding open points like improving/replacing the **Browser**, **performance** for complex UIs and, most importantly, the integration of native window handles.
 
 ## Appendix
 
@@ -153,7 +157,7 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 ![Snippet163](image-4.png)
 
-`Snippet113`: layout is wrong
+`Snippet113`: the size of the scrolled composite is wrong
 
 ![Snippet113](image-2.png)
 
@@ -161,21 +165,33 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 ![ControlExample](image-3.png)
 
-`SnippetExplorer` with themeing (**FlatLaf Darcula**)
+`SnippetExplorer` with themeing **[FlatLaf](https://www.formdev.com/flatlaf/) Darcula**
 
 ![SnippetExplorer](image-1.png)
 
-`Snippet128`: Browser (no CSS)
+`Snippet128`: custom Browser with no CSS support
 
 ![Browser](image-5.png)
 
-Bare RCP application (**not** the _sdk.product_)
+Bare RCP application (**not** the _sdk.product_): icons are missing.
 
 ![Bare RCP application](image-6.png)
 
-Double display (`SnippetDoubleDisplay`)
+Double display (`SnippetDoubleDisplay`): works fine.
 
 ![Double display working](image-7.png)
+
+Fonts sharpness: snapshot of the `GraphicsExample` running on the Swing port without using anti-aliasing for fonts (above) and using it (below).
+
+![No anti-aliasing font](image-8.png)
+
+![Anti-aliasing font](image-9.png)
+
+Graphics sharpness: snapshot of the `GraphicsExample` running on the Swing port without using anti-aliasing for graphics (above) and using it (below).
+
+![No anti-aliasing graphic](image-10.png)
+
+![Anti-aliasing graphic](image-11.png)
 
 ### Interesting links
 - [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing), 
