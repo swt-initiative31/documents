@@ -10,27 +10,27 @@ The goal of the prototyping phase is not to completely implement the SWT layer w
 
 <!-- Overview of the technology/technologies involved in the prototype, why they were selected and which details are important for using the technology -->
 
-Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java))
+Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java)).
 
 ### Reasons
 <!-- What were the reasons for considering this technology/technologies? That may not only include the overall technology, like Gtk, but also reasons for choosing a specific port for another OS or the like. The reasons may go beyond why we initially chose to develop a prototype based on the technology: did you find further benefits during the prototyping work that serve as reasons for choosing the technology? -->
 
-- Multiplatform
+- Multiplatform.
 - Standard in Java: 
-    - Well maintained
-    - Well documented
+    - Well maintained.
+    - Well documented.
     - Extensive community (expertise):
-        - **81.000+** questions in _StackOverflow_ tagged with: [swing](https://stackoverflow.com/questions/tagged/swing) (vs. **6.000+** tagged with [swt](https://stackoverflow.com/questions/tagged/swt) for comparison)
+        - **81.000+** questions in _StackOverflow_ tagged with: [swing](https://stackoverflow.com/questions/tagged/swing) (vs. **6.000+** tagged with [swt](https://stackoverflow.com/questions/tagged/swt) for comparison).
         - Relevant almost all over the world according to [Google Trends
-        ](https://trends.google.com/trends/explore?cat=5&q=Swing%20Java&hl=es-419)
+        ](https://trends.google.com/trends/explore?cat=5&q=Swing%20Java&hl=es-419).
         
         ![alt text](image.png)
     - Long life expectancy: (quote from the [Java SE Spring 2024 Roadmap Update](https://blogs.oracle.com/support/post/java-se-spring-2024-roadmap-update)) 
         > As announced in the [Java client roadmap update in 2020](http://blogs.oracle.com/java/post/java-client-roadmap-updates), Swing and AWT remain core Java SE technologies. They continue to receive bug fixes and updates on all LTS supported releases and mainline, as warranted by the evolution of the operating systems supported by Oracle Java. 
-- Customizable: supports themeing and can be made to look modern
-- Supports HiDPI
-- Supports vectorized icons
-- Initial (unfinished) implementation available
+- Customizable: supports themeing and can be made to look modern.
+- Supports HiDPI.
+- Supports vectorized icons.
+- Initial (unfinished) implementation available:
     - [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing) (based on [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html))
 
 
@@ -38,19 +38,19 @@ Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java))
 ### Details
 
 <!-- What are important details of the according technology/technologies? How do they work in a nutshell, who maintains ports to other operating systems etc.? -->
-- Part of the _Java Foundation Classes_ (JFC)
-- Delivered as part of the JDK (_e.g._ [**OpenJDK**](https://github.com/openjdk/jdk/tree/master/src/java.desktop/share/classes/javax/swing))
-- Architectural details
-    - Follows the MVC pattern
-    - Single-Threaded
-    - Allows for themeing and "hot replacement" (_i.e._ in runtime)
-    - Can embed AWT
+- Part of the _Java Foundation Classes_ (JFC).
+- Delivered as part of the JDK (_e.g._ [**OpenJDK**](https://github.com/openjdk/jdk/tree/master/src/java.desktop/share/classes/javax/swing)).
+- Architectural details:
+    - Follows the MVC pattern.
+    - Single-Threaded.
+    - Allows for themeing and "hot replacement" (_i.e._ in runtime).
+    - Can embed AWT.
 
 
 ### Required Skills
 
 <!-- What specific skills are required for adopting the technology, e.g., do you require specific programming (language) skills like C/C++? When are they required, e.g., only for setting something up once, or frequently for fixing bugs, debugging etc.? -->
-- No special skills required, it's 100% Java
+- No special skills required, it's 100% Java.
 
 
 ## Contributors
@@ -63,12 +63,12 @@ Prototyping work has been conducted by:
 - [Federico Jeanne (Vector Informatik)](https://github.com/fedejeanne)
 - [Heiko Klare (Vector Informatik)](https://github.com/heikoklare)
 
-Total time invested was about 80 hs (2 work weeks for 1 person)
+Total time invested was about 80 hs or 2 work weeks for 1 person.
 
 
 ## Results
 
-- Swing port (branch): [SWTSwing](https://github.com/swt-initiative31/prototype-swing/tree/SWTSwing)
+- Swing port (branch): [SWTSwing](https://github.com/swt-initiative31/prototype-swing/tree/SWTSwing).
 
 
 <!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produced, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
@@ -78,47 +78,46 @@ Total time invested was about 80 hs (2 work weeks for 1 person)
 <!-- What did you achieve in terms of concrete prototyping work? That may include code, documentation and other artifacts. What features/functionality can you show with these artifacts? Which milestones did you reach and what functionality do they cover and demonstrate? It would also be great to see some screenshot in specifically this section (which may be outsourced to the Appendix to ease readability of this section). -->
 
 #### Working
-- Buttons: Push, Check, Radio
+- Buttons: Push, Check, Radio.
 - StyledText:
-	- Setting the font style, foreground and background colors of StyledText (`Snippet163`)
-- StyleRange (`Snippet211`)
-- only show Window (`Snippet1`)
-- Textbox + Button (`Snippet116`)
-- Demonstrator with multiple SWT Display instances (`SnippetDoubleDisplay`)
-- `SnippetExplorer`
-- `CustomControlExample`
--  Embedding of AWT components
-	- Embed Swing/AWT in SWT (`Snippet135`)
-	- Embed a `JTable` in SWT (no flicker) (`Snippet154`)
-- Themeing
+	- Setting the font style, foreground and background colors of StyledText (`Snippet163`).
+- StyleRange (`Snippet211`).
+- Only show Window (`Snippet1`).
+- Textbox + Button (`Snippet116`).
+- Demonstrator with multiple SWT Display instances (`SnippetDoubleDisplay`).
+- `SnippetExplorer`.
+- `CustomControlExample`.
+-  Embedding of AWT components:
+	- Embed Swing/AWT in SWT (`Snippet135`).
+	- Embed a `JTable` in SWT without flicker (`Snippet154`).
+- Themeing.
 
 #### Working partially
-- Browser: no CSS
-- `ControlExample`: the application starts and looks good but some functionality is missing *e.g.* 
+- Browser: custom implementation without CSS support.
+- `ControlExample`: the application starts and looks good but some functionality is missing *e.g.* :
     - The **Tooltips** tab does not display any tooltip even though tooltips do work (they appear when one hovers over buttons in other tabs).
     - The **DateTime** widget is not implemented (yet) so its tab is not useful. 
-- Eclipse SDK product: the application starts but it has some quirks *e.g.* 
+- Eclipse SDK product: the application starts but it has some quirks *e.g.* :
     - **Icons** (images) are not visible: it's not a problem with `ToolItem` because those already display images in a normal SWT application _e.g._ in a modified version of `Snippet47`.
-    - Views can not be properly minimized/maximized
-    - Layout looks odd
-    - Several errors about _resources not being properly disposed_ are thrown upon ending the application
+    - Views can not be properly minimized/maximized.
+    - Some views have the wrong size.
+    - Several errors about _resources not being properly disposed_ are thrown upon ending the application.
 
 #### Not working (yet)
 The following topics are not working yet but there is no reason why it shouldn't work, it's just a matter of implementing the functionality.
 
-- StyledText
-	- Drag text between two StyledText widgets (`Snippet210`)
-	- Draw a box around text (`Snippet244`)
-	- Use margins in StyledText (`Snippet316`)
-- Technology set up independently with some demo project
-- The `DateTime` widget is not implemented (yet)
+- `StyledText`:
+	- Drag text between two StyledText widgets (`Snippet210`).
+	- Draw a box around text (`Snippet244`).
+	- Use margins in StyledText (`Snippet316`).
+- The `DateTime` widget is not implemented.
 
 ### Insights
 
 <!-- What insights did you gain when developing the prototype? What were the central obstacles that might also influence a full SWT implementation based on that technology? What was complicated to achieve? What did take long? -->
 
-- Decent performance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15))
-- Instantiating a second `Display` is not a problem
+- Decent performance: was to be expected (see [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15)).
+- Instantiating a second `Display` is not a problem.
 - Several basic stuff were already working (many widgets) but some were left unfinished, calculating the right size of some components like *CoolBars* and *ExpandBars* being the most notorious.
 - Activating the anti-aliasing for fonts and graphics is already possible and it can be seen in the `GraphicsExample` snippet (screenshots below).
 - The initial implementations (in SourceForge and in GitHub) weren't developed in years which means there was either little appeal to this approach or some impediment that we (yet) don't know about.
@@ -153,23 +152,23 @@ Swing looks like a promising alternative to provide a single port of SWT because
 
 ### Screenshots
 
-`Snippet163`: `StyledText`
+`Snippet163`: `StyledText`.
 
 ![Snippet163](image-4.png)
 
-`Snippet113`: the size of the scrolled composite is wrong
+`Snippet113`: the size of the scrolled composite is wrong.
 
 ![Snippet113](image-2.png)
 
-`ControlExample`
+`ControlExample`.
 
 ![ControlExample](image-3.png)
 
-`SnippetExplorer` with themeing **[FlatLaf](https://www.formdev.com/flatlaf/) Darcula**
+`SnippetExplorer` with themeing **[FlatLaf](https://www.formdev.com/flatlaf/) Darcula**.
 
 ![SnippetExplorer](image-1.png)
 
-`Snippet128`: custom Browser with no CSS support
+`Snippet128`: custom Browser with no CSS support.
 
 ![Browser](image-5.png)
 
@@ -194,10 +193,10 @@ Graphics sharpness: snapshot of the `GraphicsExample` running on the Swing port 
 ![Anti-aliasing graphic](image-11.png)
 
 ### Interesting links
-- [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing), 
-- [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html)
-- [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT)
-    - [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15)
-- [Add Swing as a supported platform for SWT (Eclipse Issue Tracker)](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930)
-- [Swing port is coming - Lotus assists IBM! (Eclipse Forum)](https://www.eclipse.org/forums/index.php/t/145268/)
+- [SWTSwing by nu11ptr (GitHub)](https://github.com/nu11ptr/SWTSwing).
+- [SWTSwing (SourceForge)](https://swtswing.sourceforge.net/main/index.html).
+- [Relationship to SWT](https://en.wikipedia.org/wiki/Swing_(Java)#Relationship_to_SWT).
+    - [SWT vs Swing performance comparison](https://en.wikipedia.org/wiki/Swing_(Java)#cite_note-15).
+- [Add Swing as a supported platform for SWT (Eclipse Issue Tracker)](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930).
+- [Swing port is coming - Lotus assists IBM! (Eclipse Forum)](https://www.eclipse.org/forums/index.php/t/145268/).
 <!-- (Optional) Additional material, like screenshots of the prototype or the like -->
