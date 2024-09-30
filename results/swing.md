@@ -122,7 +122,22 @@ The following topics are not working yet but there is no reason why it shouldn't
 - Activating the anti-aliasing for fonts and graphics is already possible and it can be seen in the `GraphicsExample` snippet (screenshots below).
 - The initial implementations (in SourceForge and in GitHub) weren't developed in years which means there was either little appeal to this approach or some impediment that we (yet) don't know about.
 - Sub-pixel rendering is not supported out of the box by Swing. The reason for this is that Swing is cross-platform and sub-pixel rendering is highly dependent on the hardware. While there are `RenderingHints` like `VALUE_TEXT_ANTIALIAS_LCD_HRGB` and `VALUE_TEXT_ANTIALIAS_LCD_HBGR` that can be provided to the `Graphics2D`, these do not assure true sub-pixel rendering because they depend on details like the LCD display having a specific pixel disposition (BGR / RGB).
-- Years ago, the initial reaction to the approach was not that good. See [Add Swing as a supported platform for SWT](https://bugs.eclipse.org/bugs/show_bug.cgi?id=69930) and [Swing port is coming - Lotus assists IBM!](https://www.eclipse.org/forums/index.php/t/145268/).
+
+#### First attempt at the Swing port and community reception
+Years ago, the community asked and voted for the Swing port and provided good arguments for it:
+- Portability: using it in environments were SWT was not yet supported
+- Usage in secure environments: getting approval to use DLLs in such environments was difficult but since Swing was pure Java, native DLLs wouldn't be necessary
+- Avoiding OS-specific issues: Java and Swing would deal with those
+- Skinability (*a.k.a.* themeing)
+- Performance improvements in the Linux port: back then, SWT was using GTK 2 and some users had reported that the UI was slow.
+
+The port was never officially adopted by the SWT maintainers though. Arguments against it were:
+- Big effort
+- The mandate of SWT was always _"efficient, portable, **native**"_. 
+
+There were some technical reasons pointed out too but it mostly boiled down to "*it might be doable but the SWT team will not look into it, it's just not worth it*". No blocking technical issues were mentioned back then.
+
+The community responded by supporting the project _SWTSwing_, but that project was never officially adopted by *Eclipse.org* and therefore it didn't get widely adopted. Even though the project made it possible to run SWT applications on top of Swing, apparently it never got to let a full Eclipse application run with it. 
 
 ### Risks
 
