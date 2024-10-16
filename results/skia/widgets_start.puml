@@ -1,0 +1,51 @@
+@startuml swt
+!define Color_Cyan #00FFFF
+!define Color_ToDo #FFA500 
+!define Color_DirectReplacement #5FA500
+
+package win32 {
+    class Control extends Widget
+    class Label Color_Cyan extends Control
+    class Button Color_ToDo extends Control
+    class Scrollable extends Control
+    class Composite extends Scrollable 
+    class Canvas extends Composite
+    class Combo Color_DirectReplacement extends Composite
+}
+
+package common {
+    class Item extends win32.Widget
+    class CLabel Color_Cyan extends win32.Canvas
+    class CCombo Color_DirectReplacement extends win32.Composite
+}
+
+note left of CCombo
+    **Snippet39**:
+    Shows the low-level methods of Button  
+    on which CCombo relies
+end note
+
+package emulated.taskbar_gtk {
+    class TaskBar extends win32.Widget
+    class TaskItem extends common.Item
+}
+
+package emulated.coolbar_gtk_cocoa {
+    class CoolBar extends win32.Composite
+    class CoolItem extends common.Item
+}
+
+package emulated.expand_cocoa {
+    class ExpandBar extends win32.Composite
+    class ExpandItem extends common.Item
+}
+
+note bottom of ExpandBar
+    Snippet223
+end note
+
+package emulated.tooltip_cocoa {
+    class ToolTip extends win32.Widget
+}
+
+@enduml
