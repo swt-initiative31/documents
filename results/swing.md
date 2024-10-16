@@ -161,7 +161,7 @@ Based on the amount of effort put into this PoC and the fact that most of it was
 
 
 **Final Assessment:** <!-- Closing assessment statement in one or two sentences; should be sufficient to understand the overall assessment in one minute -->
-Swing looks like a promising alternative to provide a single port of SWT because of its low risks, ease of distribution and because it continues to receive bug fixes and updates. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market. I suggest to keep looking into it and extend the PoC period in order to gain deeper insight regarding open points like improving/replacing the **Browser**, **performance** for complex UIs and, most importantly, the integration of native window handles.
+Swing looks like a promising alternative to provide a single port of SWT because of its low risks, ease of distribution and because it continues to receive bug fixes and updates. The fact that is 100% Java code also makes it easier to find the necessary expertise in the market. We suggest to keep looking into it and extend the PoC period in order to gain deeper insight regarding open points like improving/replacing the **Browser**, **performance** for complex UIs and, most importantly, the integration of native window handles.
 
 ## Appendix
 
