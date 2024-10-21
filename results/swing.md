@@ -24,7 +24,7 @@ Java's [Swing](https://en.wikipedia.org/wiki/Swing_(Java)).
         - Relevant almost all over the world according to [Google Trends
         ](https://trends.google.com/trends/explore?cat=5&q=Swing%20Java&hl=es-419).
         
-        ![alt text](image.png)
+        ![alt text](images_swing/image.png)
     - Long life expectancy: (quote from the [Java SE Spring 2024 Roadmap Update](https://blogs.oracle.com/support/post/java-se-spring-2024-roadmap-update)) 
         > As announced in the [Java client roadmap update in 2020](http://blogs.oracle.com/java/post/java-client-roadmap-updates), Swing and AWT remain core Java SE technologies. They continue to receive bug fixes and updates on all LTS supported releases and mainline, as warranted by the evolution of the operating systems supported by Oracle Java. 
 - Customizable: supports themeing and different themes exist (e.g., **[FlatLaf](https://www.formdev.com/flatlaf/) Darcula**).
