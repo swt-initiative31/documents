@@ -116,7 +116,7 @@ Snippets related to browser are failing at runtime currently.
  part of `wingdi.h`.
  -The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows. In case appropriate GTK APIs are not found then need to use win32 APIs to support the case.
  GTK on Windows offers callback-based printing at the API level but relies on job-based printing via Win32 at the implementation level. SWT using GTK at API level (This has to be rechecked)	
- Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. which are not completely working yet.
+ Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Basic operation of printing the text is working. Print to pdf and print to printer is working
 
 
 ### Achievements
@@ -128,6 +128,7 @@ Snippets related to browser are failing at runtime currently.
  - Able to build SWT binaries for AWT component to work in SWT Windows with GTK4 (Able to embed AWT into SWT).
  - Able to build SWT binaries using GTK4 on windows OS with Edge browser integration into SWT but which fails at runtime.
  - Analysis is ongoing regarding GTK's printer APIs on windows OS. Printer code of SWT Linux have to be changed to use cross-platform GTK APIs of printer or need to use Win32 APIs wherever required.
+   Standalone GTK application to print text to pdf and to printer is working on windows using GTK4.
 
 ### Insights
 
@@ -138,8 +139,8 @@ Snippets related to browser are failing at runtime currently.
  The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows or need to use win32 APIs wherever required . GTK printer support on Windows OS is limited compared to Linux.
  Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Each application creates a GTK dialog with a print button, and when the 'Print' button is clicked, a 
  Windows print dialog opens with printing options.
- -- Print to PDF: This option allows the user to create a PDF file; however, the generated PDF file is corrupted when opened, indicating that printing did not occur successfully to PDF.
- -- Print to Printer (Cloud Printer): Print jobs are queued in the cloud printer, which can be viewed via the printer UI, but the printer does not 	produce any printed output.
+ -- Print to PDF: This option allows the user to create a PDF file; ABle to print the text to PDF.
+ -- Print to Printer (Cloud Printer): Print jobs are queued in the cloud printer, which can be viewed via the printer UI, printer can produce printed output(text).
 
 - **Browser** (Edge browser integration)
 Browser integration into Windows SWT with GTK is complicated because GTK does not support the webkitGTK port on Windows OS and if we need to embed the Edge browser, we would have to use Microsoft OLE, which was previously used for SWT with Win32.
@@ -155,7 +156,7 @@ Browser integration into Windows SWT with GTK is complicated because GTK does no
 
 - Even though Edge browser integration is not done fully , having both GTK and win32 APIs in SWT might be messy and confusing.
 - Edge browser initialization is not working for unknown reason when win32 API is used for all browser related code. Currently this has become a blocker.
-- Printer support using GTK on windows OS is limited compared to Linux and standalone application which is tried to print using GTK on Windows is not completely working.
+- Printer support using GTK on windows OS is limited compared to Linux. Limitations are yet to be checked.
 -There is always maintenance effort when platform dependent components are used to support unavailable functionality from GTK.
 
 ## Conclusion
@@ -169,13 +170,24 @@ Using GTK for SWT on Windows can bring cross-platform consistency and modern UI 
 ## Appendix
 
 <!-- (Optional) Additional material, like screenshots of the prototype or the like -->
-TO-DO: Insert screenshots
+
 Output of standalone GTK application (Printer support of GTK on windows)
+
 ![image](https://github.com/user-attachments/assets/3325d28b-c0e9-4a92-9228-9c467d1b351f)
 
 ![image](https://github.com/user-attachments/assets/2440e893-8284-448f-a18b-3f733586d32a)
 
-
 ![image](https://github.com/user-attachments/assets/1640e642-af0e-4fd4-9eb2-b418d3129ce9)
+
+print to pdf 
+
+![image](https://github.com/user-attachments/assets/40708e48-3716-48b7-8b3c-5779ee3bcc29)
+
+Print from printer
+
+![image](https://github.com/user-attachments/assets/85a1638b-bb60-44be-9627-bbc69cd1c079)
+
+
+
 
 
