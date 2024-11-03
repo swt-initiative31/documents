@@ -33,7 +33,7 @@ Written in C, GTK is used by major desktop environments like GNOME and by cross-
 
 <!-- What are important details of the according technology/technologies? How do they work in a nutshell, who maintains ports to other operating systems etc.? -->
 
-1.**GTK on Windows OS : Using GTK in SWT layer on Windows OS**
+#### GTK on Windows OS : Using GTK in SWT layer on Windows OS
 
 SWT uses GTK (GIMP Toolkit) as the underlying windowing system to render UI components like buttons, text fields, menus, etc.
 SWT provides a high-level Java API for building graphical applications.
@@ -44,22 +44,22 @@ SWT integrates with the GTK event loop to handle user input (like mouse clicks, 
 
 Each SWT widget (such as buttons, labels, etc.) is backed by a corresponding native GTK widget. For example, SWT.Button maps to a GtkButton in GTK. When a widget is created in SWT, a corresponding GTK widget is also instantiated through native calls.
 
-**GTK Prototype on windows**
-Prototype with [SWT fragment combining GTK and Win32](https://github.com/HeikoKlare/eclipse.platform.swt/blob/gtk-on-windows/) exists 
-Reference : https://bugs.eclipse.org/bugs/show_bug.cgi?id=488431.
+**GTK Prototype on Windows**
+Prototype with [SWT fragment combining GTK and Win32](https://github.com/HeikoKlare/eclipse.platform.swt/blob/gtk-on-windows/) exists\
+Reference: https://bugs.eclipse.org/bugs/show_bug.cgi?id=488431.
 
-To install GTK on Windows machines is done by using MSYS2 . This method is based on the packages provided by MSYS2, which provides a UNIX-like environment for Windows. It provides packages for many software applications and libraries, including the GTK stack. 
-Reference : https://www.gtk.org/docs/installations/windows .
+To install GTK on Windows machines is done by using MSYS2. This method is based on the packages provided by MSYS2, which provides a UNIX-like environment for Windows. It provides packages for many software applications and libraries, including the GTK stack.\ 
+Reference: https://www.gtk.org/docs/installations/windows
 
-Detailed explanation on how to setup workspace for SWT to run on windows using GTK is given [here](https://github.com/HeikoKlare/eclipse.platform.swt/blob/gtk-on-windows/bundles/org.eclipse.swt/Readme.GTK.Win32.md) .
+Detailed explanation on how to setup workspace for SWT to run on windows using GTK is given [here](https://github.com/HeikoKlare/eclipse.platform.swt/blob/gtk-on-windows/bundles/org.eclipse.swt/Readme.GTK.Win32.md).
 
 
 ### Required Skills
 
-- Programming languages  : Java , C , C++ ,JNI (Java native interface)
-- Widget toolkit knowledge : GTK , win32 (Understanding of APIs provided by GTK / windows APIs)
-- Make file Syntax , Basic Shell scripting (Used to build SWT binaries and modify the `mak` file as required)
-- Debugging and troubleshooting skills , Understanding of build process (Compilation , linking and dependencies)
+- Programming languages: Java, C, C++, JNI (Java native interface)
+- Widget toolkit knowledge: GTK, win32 (Understanding of APIs provided by GTK / windows APIs)
+- Make file Syntax, Basic Shell scripting (Used to build SWT binaries and modify the `mak` file as required)
+- Debugging and troubleshooting skills , Understanding of build process (Compilation, linking and dependencies)
 
 
 ## Contributors
@@ -139,16 +139,16 @@ Snippets related to browser are failing at runtime currently.
  The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows or need to use win32 APIs wherever required . GTK printer support on Windows OS is limited compared to Linux.
  Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Each application creates a GTK dialog with a print button, and when the 'Print' button is clicked, a 
  Windows print dialog opens with printing options.
- -- Print to PDF: This option allows the user to create a PDF file; ABle to print the text to PDF.
- -- Print to Printer (Cloud Printer): Print jobs are queued in the cloud printer, which can be viewed via the printer UI, printer can produce printed output(text).
+   - Print to PDF: This option allows the user to create a PDF file; ABle to print the text to PDF.
+   - Print to Printer (Cloud Printer): Print jobs are queued in the cloud printer, which can be viewed via the printer UI, printer can produce printed output(text).
 
 - **Browser** (Edge browser integration)
-Browser integration into Windows SWT with GTK is complicated because GTK does not support the webkitGTK port on Windows OS and if we need to embed the Edge browser, we would have to use Microsoft OLE, which was previously used for SWT with Win32.
-	Native integration of the Edge browser will take a significant amount of time, as it requires knowledge of GTK, the OLE framework, and Win32 APIs, along with troubleshooting runtime issues that arise during interactions between OLE, GTK, and Win32 APIs.
-	 Building binaries that incorporate Win32, OLE, and GTK APIs together requires significant effort to identify the necessary libraries for compiling the native code with GTK. While this step has been completed, a proper implementation of SWT tools to embed these changes and the separation of GTK and Win32 APIs for improved code readability still needs to be done once the functionality of browser works at runtime. After all this yet the functionality is not working at runtime and it is complicated to debug and find out root cause.
+Browser integration into Windows SWT with GTK is complicated because GTK does not support the webkitGTK port on Windows OS and if we need to embed the Edge browser, we would have to use Microsoft OLE, which was previously used for SWT with Win32.\
+Native integration of the Edge browser will take a significant amount of time, as it requires knowledge of GTK, the OLE framework, and Win32 APIs, along with troubleshooting runtime issues that arise during interactions between OLE, GTK, and Win32 APIs.\
+Building binaries that incorporate Win32, OLE, and GTK APIs together requires significant effort to identify the necessary libraries for compiling the native code with GTK. While this step has been completed, a proper implementation of SWT tools to embed these changes and the separation of GTK and Win32 APIs for improved code readability still needs to be done once the functionality of browser works at runtime. After all this yet the functionality is not working at runtime and it is complicated to debug and find out root cause.
 
 - **GLCanvas**
-	GLCanvas works with the OpenGL library via platform-specific implementations (like GLX on Linux, WGL on Windows, or AGL on macOS). To make it work with GTK on windows It has to be implemented completely from the scratch using GTKGLArea.
+GLCanvas works with the OpenGL library via platform-specific implementations (like GLX on Linux, WGL on Windows, or AGL on macOS). To make it work with GTK on windows It has to be implemented completely from the scratch using GTKGLArea.
 
 ### Risks
 
@@ -173,19 +173,19 @@ Using GTK for SWT on Windows can bring cross-platform consistency and modern UI 
 
 Output of standalone GTK application (Printer support of GTK on windows)
 
-![image](https://github.com/user-attachments/assets/3325d28b-c0e9-4a92-9228-9c467d1b351f)
+![print_demo](images_gtk/print_demo.png)
 
-![image](https://github.com/user-attachments/assets/2440e893-8284-448f-a18b-3f733586d32a)
+![print_dialog](images_gtk/print_dialog.png)
 
-![image](https://github.com/user-attachments/assets/1640e642-af0e-4fd4-9eb2-b418d3129ce9)
+![cloud_printing](images_gtk/cloud_printing.png)
 
-print to pdf 
+Print to PDF: 
 
-![image](https://github.com/user-attachments/assets/40708e48-3716-48b7-8b3c-5779ee3bcc29)
+![print_to_pdf](images_gtk/print_to_pdf.png)
 
-Print from printer
+Print from printer:
 
-![image](https://github.com/user-attachments/assets/85a1638b-bb60-44be-9627-bbc69cd1c079)
+![print_from_printer](images_gtk/print_from_printer.png)
 
 
 
