@@ -22,7 +22,7 @@ Written in C, GTK is used by major desktop environments like GNOME and by cross-
 
 **Customizability:** GTK offers a high degree of flexibility, allowing developers to customize the look and behavior of widgets across all platforms if needed.
 
-**Consistent Look Across Platforms:** With GTK, developers can apply consistent theming across platforms, providing a uniform user experience. While GTK also integrates with the native platform’s look and feel, using a common toolkit allows for better control over consistent UI design across all operating systems.
+**Consistent Look Across Platforms:** With GTK, developers can apply consistent [theming](gtkCustomTheme.md) across platforms, providing a uniform user experience. While GTK also integrates with the native platform’s look and feel, using a common toolkit allows for better control over consistent UI design across all operating systems.
 
 **Actively Maintained:** GTK is open-source, widely adopted, and actively maintained, which ensures ongoing updates, community support, and alignment with modern UI trends.
 
