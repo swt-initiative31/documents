@@ -13,3 +13,5 @@ Results of the prototyping work in the initiative can be found in the `results` 
 - [Skia/Custom-Drawn](results/custom.md): Prototype using widgets that are custom-drawn with primitive drawing operations using either the OS-native rendering engines or Skia with the Java bindings provided by Skija
 - [Swing](results/swing.md): Prototype using the Java-integrated UI framework Swing
 - [GTK](results/gtk.md): Prototype using GTK, as already used for the Linux SWT implementation, with its Windows and MacOS ports to reuse the existing SWT GTK implementation on all three major operating systems
+
+Of these technologies, GTK and Skia/Custom-Drawn are still under investigation while Skia/VCL and Swing have been dropped.
