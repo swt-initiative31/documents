@@ -68,7 +68,7 @@ Total time invested was about 80 hs or 2 work weeks for 1 person.
 
 ## Results
 
-- Swing port (branch): [SWTSwing](https://github.com/swt-initiative31/prototype-swing/tree/SWTSwing).
+- Swing port (branch): [swing](https://github.com/swt-initiative31/prototype-swing/tree/swing).
 
 
 <!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produced, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
