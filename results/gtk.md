@@ -80,12 +80,16 @@ Initial work of GTK prototype is done by :
 <!-- A summary of the results of the prototyping work, including what went well and what did not go well, which artifacts and insights you produced, and which risks you identified for using the technology for a new Eclipse SWT implementation. Please also refer to other sources of information, such as code you developed or documentation you wrote. -->
 
 - **Multiple Display instances creation support :**
-Analysis is carried out on whether we can continue creation of multiple SWT's *Display* instances simultaneously like in SWT usnig win32 APIs.
-in SWT , the thread which creates a *Display* instance is distinguished as the UI thread for that display.(Multiple UI threads = Multiple *Display* instances of SWT.)
-It has been verified with both GTK3 and GTK4 versions and it is not possible to create multiple *Display* instances of SWT at a time using GTK . The main reason for this is GTK APIs cannot be called by multiple threads.
-Application can still run using Single UI thread like how SWT in Linux is currently working.
-"Snippet explorer" is used to test this where we have option to run multiple snippets to run in parallel/serial or with multi-processing where in each snippet is creating a *Display* instance.
-Details of the Analysis is provided in the document "Multiple SWT Display instances support using GTK.pptx"
+  
+    Analysis is carried out on whether we can continue creation of multiple SWT's *Display* instances simultaneously like in SWT usnig win32 APIs.
+    in SWT , the thread which creates a *Display* instance is distinguished as the UI thread for that display.(Multiple UI threads = Multiple *Display* instances of SWT.)
+  
+     It has been verified with both GTK3 and GTK4 versions and it is not possible to create multiple *Display* instances of SWT at a time using GTK . The main reason for this is GTK APIs cannot be called by multiple threads.
+  
+     Application can still run using Single UI thread like how SWT in Linux is currently working.
+    "Snippet explorer" is used to test this where we have option to run multiple snippets to run in parallel/serial or with multi-processing where in each snippet is creating a *Display* instance.
+  
+     Details of the Analysis is provided in the document "Multiple SWT Display instances support using GTK.pptx"
 
 
 - **Building SWT binaries using GTK4 :**
@@ -94,29 +98,37 @@ Changes are committed to https://github.com/swt-initiative31/prototype-gtk/commi
 
 
 - **Embedding of other window handles (AWT) :**
-It is possible to generate swt-awt-gtk-4966r2.dll on Windows, which allows to run SWT snippets 154, 155, 300, and 361 that use the SWT.EMBEDDED flag.
-The approach followed includes creating a Windows-specific swt_awt_win32.c file, and the respective object file is used in make_win32.mak to build the SWT-AWT binaries.
-However, further verification is needed to determine which scenarios fail.
- I noticed that maximizing the window causes the contents to disappear for  300 and Snippet 361 runs but fails on further interaction.
-The changes are committed to https://github.com/swt-initiative31/prototype-gtk/commit/e5414eb4d83ae109fb2fa3651784d5d234e9cbed
+  
+    It is possible to generate swt-awt-gtk-4966r2.dll on Windows, which allows to run SWT snippets 154, 155, 300, and 361 that use the SWT.EMBEDDED flag.
+    The approach followed includes creating a Windows-specific swt_awt_win32.c file, and the respective object file is used in make_win32.mak to build the SWT-AWT binaries.
+    However, further verification is needed to determine which scenarios fail.
+     I noticed that maximizing the window causes the contents to disappear for  300 and Snippet 361 runs but fails on further interaction.
+    The changes are committed to https://github.com/swt-initiative31/prototype-gtk/commit/e5414eb4d83ae109fb2fa3651784d5d234e9cbed
 
 
 - **Edge browser integration :**
-Because GTK does not support the webkitGTK port on Windows OS and if we need to embed the Edge browser, we would have to use Microsoft OLE, which was previously used for SWT with Win32. 
-The approach followed will be a platform dependent browser which still uses win32 APIs to build SWT binaries for browser support.
-Current approach followed is to reuse the SWT's browser codebase which uses Microsoft OLE and windows libraries and also win32 APIs.
-Using this approach able to build SWT binaries having both GTK and Win32 APIs building together . 
-Snippets related to browser are failing at runtime currently.
--- Not able to receive the pointer to Webview2 Controller from OLE framework which uses asynchronous call back.
--- Able to receive the pointer to webview2 Environment which uses asynchronous call back mechanisms
+  
+    Because GTK does not support the webkitGTK port on Windows OS and if we need to embed the Edge browser, we would have to use Microsoft OLE, which was previously used for SWT with Win32.
+   
+    The approach followed will be a platform dependent browser which still uses win32 APIs to build SWT binaries for browser support.
+    Current approach followed is to reuse the SWT's browser codebase which uses Microsoft OLE and windows libraries and also win32 APIs.
+    Using this approach able to build SWT binaries having both GTK and Win32 APIs building together .
+    
+    - Snippets related to browser are failing at runtime currently.
+       - Not able to receive the pointer to Webview2 Controller from OLE framework which uses asynchronous call back.
+       - Able to receive the pointer to webview2 Environment which uses asynchronous call back mechanisms
 
 - **PrintDialog :**
-`UnsupportedLinkError` is thrown for some of the printer APIs of GTK on Windows OS in SWT (for example, `gtk_enumerate_printers`, `gtk_print_unix_dialog_new`). On a Linux machine, these APIs are located in the `unix-print` directory under GTK3/4. This folder typically contains components for integrating GTK applications with the system's printing capabilities, such as CUPS (Common UNIX Printing System).
- On Windows, GTK uses GDI (Graphics Device Interface) for printing. The GTK source code (`gtkprintoperation-win32.c`) contains GDI APIs such as `StartDoc`, `StartPage`, `EndPage`, and `EndDoc`, which are 
- part of `wingdi.h`.
- -The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows. In case appropriate GTK APIs are not found then need to use win32 APIs to support the case.
- GTK on Windows offers callback-based printing at the API level but relies on job-based printing via Win32 at the implementation level. SWT using GTK at API level (This has to be rechecked)	
- Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Basic operation of printing the text is working. Print to pdf and print to printer is working
+  
+    `UnsupportedLinkError` is thrown for some of the printer APIs of GTK on Windows OS in SWT (for example, `gtk_enumerate_printers`, `gtk_print_unix_dialog_new`). On a Linux machine, these APIs are located in the `unix-print` directory under GTK3/4. This folder typically contains components for integrating GTK applications with the system's printing capabilities, such as CUPS (Common UNIX Printing System).
+  
+     On Windows, GTK uses GDI (Graphics Device Interface) for printing. The GTK source code (`gtkprintoperation-win32.c`) contains GDI APIs such as `StartDoc`, `StartPage`, `EndPage`, and `EndDoc`, which are part of `wingdi.h`.
+  
+  The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows. In case appropriate GTK APIs are not found then need to use win32 APIs to support the case.
+  
+     GTK on Windows offers callback-based printing at the API level but relies on job-based printing via Win32 at the implementation level. SWT using GTK at API level (This has to be rechecked)
+  
+     Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Basic operation of printing the text is working. Print to pdf and print to printer is working
 
 
 ### Achievements
@@ -139,7 +151,7 @@ Snippets related to browser are failing at runtime currently.
  The printer code in Windows SWT needs to be rewritten using the appropriate GTK APIs for Windows or need to use win32 APIs wherever required . GTK printer support on Windows OS is limited compared to Linux.
  Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Each application creates a GTK dialog with a print button, and when the 'Print' button is clicked, a 
  Windows print dialog opens with printing options.
-   - Print to PDF: This option allows the user to create a PDF file; ABle to print the text to PDF.
+   - Print to PDF: This option allows the user to create a PDF file; Able to print the text to PDF.
    - Print to Printer (Cloud Printer): Print jobs are queued in the cloud printer, which can be viewed via the printer UI, printer can produce printed output(text).
 
 - **Browser** (Edge browser integration)
