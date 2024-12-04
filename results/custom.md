@@ -200,6 +200,23 @@ In order to further reduce the risk regarding efforts and quality and to improve
 
 ## Appendix
 
+### Additional / Alternative Libraries
+
+Additional libraries / stacks that might be used to implement custom rendering of widgets are listed in the following.
+
+- [Lightweight Java Game Library (LWJGL)](https://www.lwjgl.org/) - cross-platform rendering library for Java
+
+#### Alternative Rendering Stack
+
+An alternative rendering stack based on 3D rendering capabilities has been used for Straylight SWT:
+
+- [BGFX](https://github.com/bkaradzic/bgfx) - Rendering Library - BSD
+- [Themable Widget Library](https://github.com/ThemableWidgetLibrary/twl) - Widget Library - BSD
+- [NanoVG](https://github.com/memononen/nanovg) - 2D Drawing Library - BSD (BGFX has a NanoVG implementation. NanoVG can be used for executing drawing operations like with an SWT GC)
+- [SimpleDirect Media Layer](https://github.com/libsdl-org/SDL) - Windowing Library - zlib
+- [FreeType](https://gitlab.freedesktop.org/freetype/freetype) - Font Rendering - FreeType/BSDish
+
+
 ### Screenshots
 
 Screenshots have been taken once based on the SWT version released with Eclipse 2024-09 on Windows and once with the same version in which several widgets (label, button, combo) have been replaced by custom, OS-agnostic implementations, see [this repository](https://github.com/swt-initiative31/prototype-skija).
