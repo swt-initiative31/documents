@@ -132,7 +132,7 @@ Changes are committed to https://github.com/swt-initiative31/prototype-gtk/commi
 
 - **Performance :**
 
-    A few test cases were written to evaluate the performance of SWT on Windows OS. SWT's performance was compared against GTK and Win32 APIs. The execution times were recorded as follows, and the test cases have been checked in here.
+    A few test cases were written to evaluate the performance of SWT on Windows OS. SWT's performance was compared against GTK and Win32 APIs. The execution times were recorded as follows, and the test cases have been checked in [here](https://github.com/swt-initiative31/prototype-gtk/tree/gtk4-multi-os/tests/org.eclipse.swt.tests/JUnit%20Tests/org/eclipse/swt/tests/junit/performance).
   
 | Testcase | Description | GTK4 (partially working)    | GTK3 |Win32 API | Linux (VM) |
 |----------|----------|-----------|------------|-----------|-----------|
