@@ -130,6 +130,22 @@ Changes are committed to https://github.com/swt-initiative31/prototype-gtk/commi
   
      Two standalone GTK applications were created using C and Java to test printer operations on Windows OS. Basic operation of printing the text is working. Print to pdf and print to printer is working
 
+- **Performance :**
+
+    A few test cases were written to evaluate the performance of SWT on Windows OS. SWT's performance was compared against GTK and Win32 APIs. The execution times were recorded as follows, and the test cases have been checked in here.
+  
+| Testcase | Description | GTK4 (partially working)    | GTK3 |Win32 API | Linux (VM) |
+|----------|----------|-----------|------------|-----------|-----------|
+| SWTTablePerformanceTest    | Populate table with 100000 rows| 2842 ms | 3714 ms     | 8143 ms      |            |
+| TextRenderingPerformanceTest    | Render 1000 Labels| 545 ms | 882 ms | 257 ms      |            |
+| TextRenderingPerformanceTest    | Render 1000 Text Fields| 1124 ms |2096 ms| 544 ms      |            |
+| TextRenderingPerformanceTest    | Render Large Text in StyledText| 30 sec | 17 ms| 17 ms      |            |
+| CustomDrawingPerformanceTest | Draw 100000 rectangles | 111 ms | ~200 ms | ~605 ms | |
+| DragAndDropPerformanceTest | 1000 drag and drop operations | 332 ms | 327 ms | 645 ms | |
+| Test_org_eclipse_swt_widgets_Tree | Existing SWT Testcases | 6155 s| 5411 s |715 s | |
+
+
+
 
 ### Achievements
 
